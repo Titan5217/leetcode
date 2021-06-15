@@ -21,11 +21,27 @@ public class MoveZeroes{
   }
   //leetcode submit region begin(Prohibit modification and deletion)
   class Solution {
-    // solution1: 遍历nums,记录0的个数，再将遍历，将非0的写入，补位多个0
-    // solution2: 遍历nums,将非0的数写入，补0
-    // solution3: 遍历nums,将非0的前移，并记录位置，将当前值设置为0
+    // solution1: 遍历nums,记录0的个数，再将遍历，将非0的写入，补位多个0；循环多，效率低
+    // solution2: 遍历nums,将非0的数写入新数组，补0；循环多，效率低
+
+    // solution4: 遍历nums,position为size；不可行，影响顺序
+//    public void moveZeroes(int[] nums) {
+//        int size = nums.length;
+//        int j = size - 1;
+//        for (int i = 0; i < size; i ++){
+//            if (nums[i] == 0){
+//                nums[i] = nums[j];
+//                if (i > j){
+//                    break;
+//                }
+//                nums[j] = 0;
+//                j --;
+//            }
+//        }
+//    }
+
+  // solution3: 遍历nums,将非0的前移，并记录位置，将当前值设置为0
     public void moveZeroes(int[] nums) {
-//        solution3
         int j = 0;
         int size = nums.length;
         for (int i = 0; i < size; i ++){
