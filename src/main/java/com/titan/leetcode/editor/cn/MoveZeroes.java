@@ -42,6 +42,10 @@ public class MoveZeroes{
 
   // solution3: 遍历nums,将非0的前移，并记录位置，将当前值设置为0
     public void moveZeroes(int[] nums) {
+        if (null == nums){
+            return;
+        }
+
         int j = 0;
         int size = nums.length;
         for (int i = 0; i < size; i ++){
