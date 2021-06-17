@@ -73,28 +73,42 @@ public class ThreeSum{
             }
 
             Arrays.sort(nums);
+//            以其中一个为主，其他的进行两值相加得负的主数
+//                while (i < j){
+//                    if (nums[i] + nums[j] + nums[k] < 0){
+//                        while (i < j && nums[i] == nums[++i]);
+//                    } else if (nums[i] + nums[j] + nums[k] > 0){
+//                        while (i < j && nums[j] == nums[--j]);
+//                    } else {
+//                        retList.add(Arrays.asList(nums[k], nums[i], nums[j]));
+//                        while(i < j && nums[i] == nums[++i]);
+//                        while(i < j && nums[j] == nums[--j]);
+//                    }
+//                }
+//            }
 
             //排序，降维成两数之和法
-            for (int i = 0; i < len; i++) {
+            for (int i = 0; i < len - 2; i++) {
                 if (nums[i] > 0){
                     break;
                 }
+
+                if (i > 0 && nums[i] == nums[i - 1]){
+                    continue;
+                }
+
                 int j = i + 1;
                 int k = len - 1;
                 while (j < k){
                     int sum = nums[i] + nums[j] + nums[k];
                     if (sum > 0){
-                        k --;
+                        while (j < k && nums[k] == nums[--k]);
                     } else if (sum < 0){
-                        j ++;
+                        while (j < k && nums[j] == nums[++j]);
                     } else {
                         retList.add(Arrays.asList(nums[i], nums[j], nums[k]));
-                        while (j < k && nums[k] == nums[k -1]){
-                            k --;
-                        }
-                        while (j < k && nums[j] == nums[j + 1]){
-                            j ++;
-                        }
+                        while (j < k && nums[k] == nums[--k]);
+                        while (j < k && nums[j] == nums[++j]);
                     }
                 }
             }
