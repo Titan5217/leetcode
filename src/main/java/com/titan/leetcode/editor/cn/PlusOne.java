@@ -42,6 +42,13 @@
 // 👍 707 👎 0
 
 package com.titan.leetcode.editor.cn;
+
+import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLService;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class PlusOne{
     public static void main(String[] args) {
        Solution solution = new PlusOne().new Solution();
@@ -49,7 +56,21 @@ public class PlusOne{
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int[] plusOne(int[] digits) {
+            // 反向指针
+            int length = digits.length;
 
+            for (int i = length - 1; i >= 0; i--) {
+                digits[i] ++;
+                digits[i] %= 10;
+                if (digits[i] > 0){
+                    return digits;
+                }
+            }
+
+            digits = new int[length + 1];
+            digits[0] = 1;
+
+            return digits;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
