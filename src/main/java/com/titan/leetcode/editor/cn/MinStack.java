@@ -45,52 +45,52 @@ package com.titan.leetcode.editor.cn;
 import java.util.Stack;
 
 public class MinStack{
-    public static void main(String[] args) {
-       Solution solution = new MinStack().new Solution();
-  }
-    //leetcode submit region begin(Prohibit modification and deletion)
-
-    class MinStack {
-        // 双栈
-        private Stack<Integer> valueStack;
-        private Stack<Integer> minStack;
-
-        /** initialize your data structure here. */
-        public MinStack() {
-            valueStack = new Stack<Integer>();
-            minStack = new Stack<Integer>();
-        }
-
-        public void push(int val) {
-            valueStack.push(val);
-            if (minStack.isEmpty() || minStack.peek() >= val){
-                minStack.push(val);
-            }
-        }
-
-        public void pop() {
-            if (!valueStack.isEmpty()){
-                Integer pop = valueStack.pop();
-                if (pop == minStack.peek()){
-                    minStack.pop();
-                }
-            }
-        }
-
-        public int top() {
-            if (!valueStack.isEmpty()){
-                return valueStack.peek();
-            }
-            throw new RuntimeException("栈中元素为空，此操作非法");
-        }
-
-        public int getMin() {
-            if (!minStack.isEmpty()){
-                return minStack.peek();
-            }
-            throw new RuntimeException("栈中元素为空，此操作非法");
-        }
-    }
+//    public static void main(String[] args) {
+//       Solution solution = new MinStack().new Solution();
+//  }
+//    //leetcode submit region begin(Prohibit modification and deletion)
+//
+//    class MinStack {
+//        // 双栈
+//        private Stack<Integer> valueStack;
+//        private Stack<Integer> minStack;
+//
+//        /** initialize your data structure here. */
+//        public MinStack() {
+//            valueStack = new Stack<Integer>();
+//            minStack = new Stack<Integer>();
+//        }
+//
+//        public void push(int val) {
+//            valueStack.push(val);
+//            if (minStack.isEmpty() || minStack.peek() >= val){
+//                minStack.push(val);
+//            }
+//        }
+//
+//        public void pop() {
+//            if (!valueStack.isEmpty()){
+//                Integer pop = valueStack.pop();
+//                if (pop == minStack.peek()){
+//                    minStack.pop();
+//                }
+//            }
+//        }
+//
+//        public int top() {
+//            if (!valueStack.isEmpty()){
+//                return valueStack.peek();
+//            }
+//            throw new RuntimeException("栈中元素为空，此操作非法");
+//        }
+//
+//        public int getMin() {
+//            if (!minStack.isEmpty()){
+//                return minStack.peek();
+//            }
+//            throw new RuntimeException("栈中元素为空，此操作非法");
+//        }
+//    }
 
 /**
  * Your MinStack object will be instantiated and called as such:
