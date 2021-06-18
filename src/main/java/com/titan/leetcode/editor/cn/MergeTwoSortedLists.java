@@ -44,7 +44,7 @@ public class MergeTwoSortedLists{
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-            // while循环
+            // 【最优】while循环
             ListNode retPreNode = new ListNode();
 
             ListNode preNode = retPreNode;
@@ -63,12 +63,15 @@ public class MergeTwoSortedLists{
 
             return retPreNode.next;
 
-            // 递归
+            // 【最优】递归
 //            if (l1 == null) {
 //                return l2;
-//            } else if (l2 == null) {
+//            }
+//            if (l2 == null) {
 //                return l1;
-//            } else if (l1.val < l2.val) {
+//            }
+//
+//            if (l1.val < l2.val) {
 //                l1.next = mergeTwoLists(l1.next, l2);
 //                return l1;
 //            } else {
