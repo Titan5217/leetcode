@@ -51,6 +51,7 @@ public class NAryTreeLevelOrderTraversal{
         public List<List<Integer>> levelOrder(Node root) {
             // 广度优先迭代，一层一层的处理
             List<List<Integer>> retList = new ArrayList<>();
+            if (root == null) return retList;
 
             Queue<Node> childList = new LinkedList<Node>();
             childList.add(root);
