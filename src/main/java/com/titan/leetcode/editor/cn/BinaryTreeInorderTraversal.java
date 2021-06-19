@@ -93,34 +93,34 @@ public class BinaryTreeInorderTraversal{
 //            return list;
 
             // 莫里斯
-//            List<Integer> list = new ArrayList<>();
-//            TreeNode predecessor = null; //当前节点的前一个节点
-//
-//            while (root != null){
-//                if (root.left != null){
-//                    //左走一步，然后一路向右，取得当前节点前的最后一个节点
-//                    predecessor = root.left;
-//                    while (predecessor != null && predecessor.right != root){
-//                        predecessor = predecessor.right;
-//                    }
-//
-//                    //predecessor已是最右的节点，确认此节点是否有左子树
-//                    if (predecessor.right == null){
-//                        predecessor.right = root;
-//                        root = root.left;
-//                    } else {
-//                        //
-//                        list.add(root.val);
-//                        predecessor.right = null;
-//                        root = root.right;
-//                    }
-//                } else {
-//                    list.add(root.val);
-//                    root = root.right;
-//                }
-//            }
-//
-//            return list;
+            List<Integer> list = new ArrayList<>();
+            TreeNode predecessor = null; //当前节点的前一个节点
+
+            while (root != null){
+                if (root.left != null){
+                    //左走一步，然后一路向右，取得当前节点前的最后一个节点
+                    predecessor = root.left;
+                    while (predecessor != null && predecessor.right != root){
+                        predecessor = predecessor.right;
+                    }
+
+                    //predecessor已是最右的节点，确认此节点是否有左子树
+                    if (predecessor.right == null){
+                        predecessor.right = root;
+                        root = root.left;
+                    } else {
+                        //
+                        list.add(root.val);
+                        predecessor.right = null;
+                        root = root.right;
+                    }
+                } else {
+                    list.add(root.val);
+                    root = root.right;
+                }
+            }
+
+            return list;
         }
 
         private void inorder(TreeNode root, List<Integer> list) {
