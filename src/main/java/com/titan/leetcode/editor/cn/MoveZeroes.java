@@ -1,3 +1,4 @@
+//[283]移动零
 //给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。 
 //
 // 示例: 
@@ -12,72 +13,48 @@
 // 尽量减少操作次数。 
 // 
 // Related Topics 数组 双指针 
-// 👍 1083 👎 0
+// 👍 1089 👎 0
 
 package com.titan.leetcode.editor.cn;
 public class MoveZeroes{
-  public static void main(String[] args) {
+    public static void main(String[] args) {
        Solution solution = new MoveZeroes().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-  class Solution {
-      // solution1: [循环多，效率低]遍历nums,记录0的个数，再将遍历，将非0的写入，补位多个0；循环多，效率低
-      // solution2: [循环多，不能复制]遍历nums,将非0的数写入新数组，补0；
-
-      // solution3: 遍历nums,将非0的前移，并记录位置，将当前值设置为0
-//      public void moveZeroes(int[] nums) {
-//          if (null == nums){
-//              return;
-//          }
-//
-//          int j = 0;
-//          int size = nums.length;
-//          for (int i = 0; i < size; i ++){
-//              if (nums[i] != 0){
-//                  nums[j] = nums[i];
-//                  if (i > j){
-//                      nums[i] = 0;
-//                  }
-//                  j ++;
-//              }
-//          }
-//      }
-
-      // solution4: [不可行，影响顺序]遍历nums,position为size；
-    //    public void moveZeroes(int[] nums) {
-    //        int size = nums.length;
-    //        int j = size - 1;
-    //        for (int i = 0; i < size; i ++){
-    //            if (nums[i] == 0){
-    //                nums[i] = nums[j];
-    //                if (i > j){
-    //                    break;
-    //                }
-    //                nums[j] = 0;
-    //                j --;
-    //            }
-    //        }
-    //    }
-
-      // solution5: 滚雪球方式
-      public void moveZeroes(int[] nums) {
-          if (null == nums) {
-              return;
-          }
-
-          int snowSize = 0;
-          int size = nums.length;
-          for (int i = 0; i < size; i++) {
-              if (nums[i] == 0) {
-                  snowSize++;
-              } else if (snowSize > 0) {
-                  int tmp = nums[i];
-                  nums[i] = 0;
-                  nums[i - snowSize] = tmp;
-              }
-          }
-      }
-  }
-  //leetcode submit region end(Prohibit modification and deletion)
+    }
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public void moveZeroes(int[] nums) {
+            // 记录补位
+            int position = 0;
+            for (int num: nums) {
+                if (num != 0){
+                    nums[position ++] = num;
+                }
+            }
+            while (position < nums.length){
+                nums[position ++] = 0;
+            }
+            // 快慢指针
+//            for (int i = 0, j = 0; i < nums.length; i++) {
+//                if (nums[i] != 0){
+//                    nums[j ++] = nums[i];
+//                    if (i >= j){
+//                        nums[i] = 0;
+//                    }
+//                }
+//            }
+            // 雪球
+//            int snowSize = 0;
+//            for (int i = 0; i < nums.length; i++) {
+//                if (nums[i] == 0){
+//                    snowSize++;
+//                } else if (snowSize > 0) {
+//                    int tmp = nums[i - snowSize];
+//                    nums[i - snowSize] = nums[i];
+//                    nums[i] = tmp;
+//                }
+//            }
+        }
+    }
+    //leetcode submit region end(Prohibit modification and deletion)
 
 }
