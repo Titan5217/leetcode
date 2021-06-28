@@ -71,6 +71,7 @@ public class OpenTheLock{
         public int openLock(String[] deadends, String target) {
             // 暴力法。取得从0000到target的所有可能性，在路径迭代过程中，去除失败的整条路径，看是否有成功的；在剩余的路径中选次数最少的
             // DP,
+            return -100;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
