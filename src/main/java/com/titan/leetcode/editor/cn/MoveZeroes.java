@@ -16,6 +16,10 @@
 // 👍 1083 👎 0
 
 package com.titan.leetcode.editor.cn;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MoveZeroes{
     public static void main(String[] args) {
         Solution solution = new MoveZeroes().new Solution();
@@ -23,27 +27,50 @@ public class MoveZeroes{
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public void moveZeroes(int[] nums) {
-//            1.【不能拷贝额外的数组】遍历，将非零写入新数组，记录0的个数，遍历完成后对0补位
-//            2.双指针，记录遍历位置与非0的位置，非0则写到非0指针位置并将当前位置设置为0，时间复杂度O(n)
-//            int arrayLength = nums.length;
-//            int uZeroIndex = 0;
-//            for (int i = 0; i < arrayLength; i ++){
+            // []两次循环，第一次取出非1的下标，第二次写入 O(n)
+//            if (nums == null || nums.length == 0){
+//                return ;
+//            }
+//            List<Integer> notZeroIndex = new ArrayList();
+//            for (int i = 0; i < nums.length; i++) {
 //                if (nums[i] != 0){
-//                    nums[uZeroIndex] = nums[i];
-//                    if (i > uZeroIndex){
-//                        nums[i] = 0;
-//                    }
-//                    uZeroIndex ++;
+//                    notZeroIndex.add(i);
 //                }
 //            }
-//            3.雪球，记录雪球大小，遇到0则将雪球加1，非0则与当前位置之前的数据进行替换，时间复杂度O(n)
+//            for (int i = 0; i < nums.length; i++) {
+//                if (i < notZeroIndex.size()){
+//                    nums[i] = nums[notZeroIndex.get(i)];
+//                } else {
+//                    nums[i] = 0;
+//                }
+//            }
+            // 快慢指针 O(n)
+//            if (null == nums || nums.length <= 1){
+//                return;
+//            }
+//            int j = 0;
+//            for (int i = 0; i < nums.length; i++) {
+//                if (nums[i] != 0){
+//                    nums[j] = nums[i];
+//                    if (i >  j){
+//                        nums[i] = 0;
+//                    }
+//                    j ++;
+//                }
+//            }
+
+            // 雪球 O(n)
+            if (nums == null || nums.length == 1){
+                return;
+            }
             int snowSize = 0;
-            int arrayLength = nums.length;
-            for (int i = 0; i < arrayLength; i ++){
+            for (int i = 0; i < nums.length; i++) {
                 if (nums[i] == 0){
                     snowSize ++;
-                } else if (snowSize > 0){
-                    nums[i - snowSize] = nums[i];
+                    continue;
+                }
+                nums[i - snowSize] = nums[i];
+                if (snowSize > 0){
                     nums[i] = 0;
                 }
             }
