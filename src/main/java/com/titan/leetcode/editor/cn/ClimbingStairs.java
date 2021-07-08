@@ -38,38 +38,40 @@ public class ClimbingStairs{
     class Solution {
         Map<Integer, Integer> map = new HashMap<>();
         public int climbStairs(int n) {
-//            f(1) = 1
-//            f(2) = 2
-//            f(3) = f(2) + f(1)
-//            f(n) = f(n - 1) + f(n - 2)
-            // 循环
-//            int f1 = 0;
-//            int f2 = 0;
-//            int f3 = 1;
-//
-//            for (int i = 0; i < n; i++) {
-//                f1 = f2;
-//                f2 = f3;
-//                f3 = f2 + f1;
-//            }
-//
-//            return f3;
+            // 数学？不记得公式，不会推算。。
+            // 递归 O(2^n)
+//            return recursion(n);
+            
+            // dp O(n)
+            return dp(n);
+        }
 
-            // 递归 @Todo 递归四步
-            if (n < 0){
-                return 0;
+        private int dp(int n) {
+            int[] dp = new int[n + 1];
+            dp[0] = 1;
+            dp[1] = 1;
+
+            for (int i = 2; i <= n; i++) {
+                dp[i] = dp[i - 1] + dp[i - 2];
             }
-            if (n == 0){
-                return 1;
+            return dp[n];
+        }
+
+        // 带缓存的递归
+        private int recursion(int n) {
+            if (n <= 2){
+                return n;
             }
+
             if (map.containsKey(n)){
                 return map.get(n);
             }
 
-            int step = climbStairs(n - 1) + climbStairs(n - 2);
-            map.put(n, step);
+            int value = recursion(n - 1) + recursion(n - 2);
 
-            return step;
+            map.put(n, value);
+
+            return value;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
