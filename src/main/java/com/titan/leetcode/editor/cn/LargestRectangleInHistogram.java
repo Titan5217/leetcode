@@ -32,10 +32,8 @@ public class LargestRectangleInHistogram{
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int largestRectangleArea(int[] heights) {
-            // 左右边界
+            // 暴力 O(n^2)
 
-            // 先扫左边界，再扫右边界，之后算面积
-            // 单栈
 
             return 1;
         }

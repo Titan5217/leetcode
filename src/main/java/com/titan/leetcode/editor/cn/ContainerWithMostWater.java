@@ -57,28 +57,27 @@ public class ContainerWithMostWater{
     class Solution {
         public int maxArea(int[] height) {
             // 暴力法，O(n^2)
-            int maxArea = 0;
-            int length = height.length;
-
-            for (int i = 0; i < length - 1; i ++){
-                for (int j = i + 1; j < length; j ++) {
-                    int minHeight = Math.min(height[i], height[j]);
-                    maxArea = Math.max(maxArea, minHeight * (j - i));
-                }
-            }
-
-            return maxArea;
+//            int maxArea = 0;
+//            int length = height.length;
+//
+//            for (int i = 0; i < length - 1; i ++){
+//                for (int j = i + 1; j < length; j ++) {
+//                    int minHeight = Math.min(height[i], height[j]);
+//                    maxArea = Math.max(maxArea, minHeight * (j - i));
+//                }
+//            }
+//
+//            return maxArea;
 
             // 双向指针
-//            int length = height.length;
-//            int l = 0;
-//            int r = length - 1;
-//            int maxArea = 0;
-//            while (l < r){
-//                int minHeight = height[l] < height [r] ? height[l ++] : height[r --];
-//                maxArea = Math.max(maxArea, minHeight * (r - l + 1));
-//            }
-//            return maxArea;
+            int length = height.length;
+            int l = 0, r = length - 1;
+            int area = 0;
+            while (l < r){
+                int minHeight = height[l] < height[r] ? height[l++] : height[r--];
+                area = Math.max(area, minHeight * (r - l + 1));
+            }
+            return area;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

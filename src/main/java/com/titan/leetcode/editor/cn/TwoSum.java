@@ -67,6 +67,7 @@ public class TwoSum{
             }
             return new int[0];
 
+
             // hash
 //            int length = nums.length;
 //            Map<Integer, Integer> tmpMap = new HashMap<Integer, Integer>();
