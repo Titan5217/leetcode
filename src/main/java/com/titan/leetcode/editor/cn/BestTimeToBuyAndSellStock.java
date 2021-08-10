@@ -44,7 +44,7 @@ public class BestTimeToBuyAndSellStock{
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int maxProfit(int[] prices) {
-          // 迭代，最小值与最大值
+          // 【超时】迭代，最小值与最大值
           return solution1(prices);
         }
 
