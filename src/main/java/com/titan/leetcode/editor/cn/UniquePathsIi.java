@@ -54,12 +54,15 @@ public class UniquePathsIi{
             // dp   d[i][j] = d[i + 1][j] + d[i][j + 1]
             int m = obstacleGrid.length;
             int n = obstacleGrid[0].length;
-            int[][] d = new int[m][n];
-            for (int i = 0; i < m; i++) {
-                d[i][n - 1] = obstacleGrid[i][n - 1] == 0 ? 1 : 0;
+            int[][] d = new int[m + 1][n + 1];
+
+            d[m - 1][n - 1] = obstacleGrid[m - 1][n - 1] == 0 ? 1 : 0;
+            for (int i = m - 2; i >= 0 ; i--) {
+                d[i][n - 1] = d[i + 1][n - 1] == 0 ? 0 : (obstacleGrid[i][n - 1] == 0 ? 1 : 0);
             }
-            for (int i = 0; i < n; i++) {
-                d[m - 1][i] = obstacleGrid[m - 1][i] == 0 ? 1 : 0;
+
+            for (int i = n - 2; i >= 0 ; i--) {
+                d[m - 1][i] = d[m - 1][i + 1] == 0 ? 0 : (obstacleGrid[m - 1][i] == 0 ? 1 : 0);
             }
 
             for (int i = m - 2; i >= 0; i--) {

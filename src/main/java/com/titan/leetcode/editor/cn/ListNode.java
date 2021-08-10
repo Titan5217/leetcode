@@ -23,10 +23,13 @@ public class ListNode {
         ListNode root = new ListNode(vals[0]);
         Queue<ListNode> queue = new LinkedList<>();
         int cur = 1;
+        int length = vals.length;
         queue.offer(root);
         while (queue != null) {
             ListNode r = queue.poll();
-            if (vals[cur] == null) {
+            if (cur == length){
+                break;
+            } else if (vals[cur] == null) {
                 r.next=null;
             } else {
                 r.next = new ListNode(vals[cur]);
