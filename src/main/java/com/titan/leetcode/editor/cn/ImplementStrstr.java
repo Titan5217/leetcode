@@ -48,15 +48,61 @@
 
 package com.titan.leetcode.editor.cn;
 public class ImplementStrstr{
-  public static void main(String[] args) {
-       Solution solution = new ImplementStrstr().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int strStr(String haystack, String needle) {
-        return 1;
+    public static void main(String[] args) {
+        Solution solution = new ImplementStrstr().new Solution();
     }
-}
-//leetcode submit region end(Prohibit modification and deletion)
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int strStr(String haystack, String needle) {
+            // [超时]迭代
+//            return solution1(haystack, needle);
+            return solution2(haystack, needle);
+
+            // kmp
+
+        }
+
+        public int solution2(String haystack, String needle) {
+            int n = haystack.length(), m = needle.length();
+            for (int i = 0; i + m <= n; i++) {
+                boolean flag = true;
+                for (int j = 0; j < m; j++) {
+                    if (haystack.charAt(i + j) != needle.charAt(j)) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int solution1(String haystack, String needle) {
+            if (needle == null || needle.length() == 0){
+                return 0;
+            }
+
+            int length1 = haystack.length();
+            int length2 = needle.length();
+            if (length2 > length1){
+                return -1;
+            }
+
+            for (int i = 0; i + length2 < length1; i++) {
+                int index = 0;
+                while (i < length1 - index && index < length2 && haystack.charAt(i + index) == needle.charAt(index)){
+                    index ++;
+                    if (index == length2){
+                        return i;
+                    }
+                }
+            }
+
+            return -1;
+        }
+    }
+    //leetcode submit region end(Prohibit modification and deletion)
 
 }
