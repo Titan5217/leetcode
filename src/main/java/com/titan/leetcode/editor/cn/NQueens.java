@@ -62,11 +62,11 @@ public class NQueens{
             return retList;
         }
 
-        private void combintList(int[] tmpArray, List<List<String>> retList) {
-            for (int i = 0; i < tmpArray.length; i++) {
-
-            }
-        }
+//        private void combintList(int[] tmpArray, List<List<String>> retList) {
+//            for (int i = 0; i < tmpArray.length; i++) {
+//
+//            }
+//        }
 
         private void dfs(int queenCount, int col, char[][] tmpArray, List<List<String>> retList) {
             // level 就是
