@@ -36,18 +36,41 @@
 
 package com.titan.leetcode.editor.cn;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SubsetsIi{
-  public static void main(String[] args) {
+    public static void main(String[] args) {
        Solution solution = new SubsetsIi().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public List<List<Integer>> subsetsWithDup(int[] nums) {
-        return null;
     }
-}
-//leetcode submit region end(Prohibit modification and deletion)
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+
+        public List<List<Integer>> subsetsWithDup(int[] nums) {
+            Arrays.sort(nums);
+            dfs(false, 0, nums, new ArrayList<Integer>());
+            return ans;
+        }
+
+        public void dfs(boolean choosePre, int cur, int[] nums, ArrayList<Integer> path) {
+            if (cur == nums.length) {
+                ans.add(new ArrayList<Integer>(path));
+                return;
+            }
+            // 不选
+            dfs(false, cur + 1, nums, path);
+            if (!choosePre && cur > 0 && nums[cur - 1] == nums[cur]) {
+                return;
+            }
+            // 选
+            path.add(nums[cur]);
+            dfs(true, cur + 1, nums, path);
+            path.remove(path.size() - 1);
+        }
+
+    }
+    //leetcode submit region end(Prohibit modification and deletion)
 
 }
