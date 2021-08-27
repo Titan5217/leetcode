@@ -33,30 +33,29 @@
 
 package com.titan.leetcode.editor.cn;
 public class SymmetricTree{
-  public static void main(String[] args) {
+    public static void main(String[] args) {
        Solution solution = new SymmetricTree().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public boolean isSymmetric(TreeNode root) {
-        return false;
     }
-}
-//leetcode submit region end(Prohibit modification and deletion)
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public boolean isSymmetric(TreeNode root) {
+            if (root == null){
+                return true;
+            }
+            return isSymmetric(root.left, root.right);
+        }
+
+        private boolean isSymmetric(TreeNode oneNode, TreeNode otherNode) {
+            if (oneNode == null || otherNode == null){
+                return oneNode == otherNode;
+            }
+            if (oneNode.val != otherNode.val){
+                return false;
+            }
+            return isSymmetric(oneNode.left, otherNode.right) && isSymmetric(oneNode.right, otherNode.left);
+        }
+
+    }
+    //leetcode submit region end(Prohibit modification and deletion)
 
 }
