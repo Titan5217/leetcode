@@ -46,12 +46,48 @@ package com.titan.leetcode.editor.cn;
 public class JuZhenZhongDeLuJingLcof{
     public static void main(String[] args) {
        Solution solution = new JuZhenZhongDeLuJingLcof().new Solution();
+        solution.exist(new char[][]{{'a', 'b'}, {'c', 'd'}}, "abcd");
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
+        int[] dx = {0, -1, 0, 1};
+        int[] dy = {1, 0, -1, 0};
         public boolean exist(char[][] board, String word) {
+            int bx = board.length;
+            int by = board[0].length;
+            char[] words = word.toCharArray();
+            for (int i = 0; i < bx; i++) {
+                for (int j = 0; j < by; j++) {
+                    if (board[i][j] != words[0]){
+                        continue;
+                    }
+                    if (dfs(board, words, i, j, 0)){
+                        return true;
+                    }
+                }
+            }
 
+            return false;
+        }
+
+        private boolean dfs(char[][] board, char[] words, int x, int y, int currentWordLength) {
+            if (x < 0 || y < 0 || x >= board.length || y >= board[0].length || board[x][y] != words[currentWordLength]){
+                return false;
+            }
+            if (currentWordLength == words.length - 1){
+                return true;
+            }
+            board[x][y] = '\0';
+            // 执行效率竟然比下边的方式效率低
+//            boolean res = false;
+//            for (int i = 0; i < 4; i++) {
+//                res |= dfs(board, words, x + dx[i], y + dy[i], currentWordLength + 1);
+//            }
+            boolean res = dfs(board, words, x + 1, y, currentWordLength + 1) || dfs(board, words, x - 1, y, currentWordLength + 1) ||
+                    dfs(board, words, x, y + 1, currentWordLength + 1) || dfs(board, words, x , y - 1, currentWordLength + 1);
+            board[x][y] = words[currentWordLength];
+            return res;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

@@ -41,30 +41,27 @@
 
 package com.titan.leetcode.editor.cn;
 public class PathSum{
-  public static void main(String[] args) {
+    public static void main(String[] args) {
        Solution solution = new PathSum().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public boolean hasPathSum(TreeNode root, int targetSum) {
-
     }
-}
-//leetcode submit region end(Prohibit modification and deletion)
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public boolean hasPathSum(TreeNode root, int targetSum) {
+            return dfs(root, targetSum);
+        }
+
+        private boolean dfs(TreeNode currentNode, int targetSum) {
+            if (currentNode == null){
+                return false;
+            }
+
+            if (currentNode.left == null && currentNode.right == null ){
+                return targetSum == currentNode.val;
+            }
+
+            return dfs(currentNode.left, targetSum - currentNode.val) || dfs(currentNode.right, targetSum - currentNode.val);
+        }
+    }
+    //leetcode submit region end(Prohibit modification and deletion)
 
 }

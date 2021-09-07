@@ -108,12 +108,5 @@ public class Codec {
 // Codec deser = new Codec();
 // TreeNode ans = deser.deserialize(ser.serialize(root));
 //leetcode submit region end(Prohibit modification and deletion)
-    
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
 
 }
