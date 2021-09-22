@@ -81,31 +81,53 @@ public class ValidSudoku{
         }
 
         private boolean dfs(char[][] board) {
-            Map<Character, Integer>[] xMap = new HashMap[9];
-            Map<Character, Integer>[] yMap = new HashMap[9];
-            Map<Character, Integer>[] blockMap = new HashMap[9];
-            for (int i = 0; i < 9; i++) {
-                xMap[i] = new HashMap<>();
-                yMap[i] = new HashMap<>();
-                blockMap[i] = new HashMap<>();
+            Map<Character, Integer>[] xMapArray = new HashMap[9];
+            Map<Character, Integer>[] yMapArray = new HashMap[9];
+            Map<Character, Integer>[] blockMapArray = new HashMap[9];
+            for (int i = 0; i < board.length; i++) {
+                xMapArray[i] = new HashMap<>();
+                yMapArray[i] = new HashMap<>();
+                blockMapArray[i] = new HashMap<>();
             }
-
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     char value = board[i][j];
                     if (value != '.'){
-                        xMap[i].put(value, xMap[i].getOrDefault(value, 0) + 1);
-                        yMap[j].put(value, yMap[j].getOrDefault(value, 0) + 1);
+                        xMapArray[i].put(value, xMapArray[i].getOrDefault(value, 0) + 1);
+                        yMapArray[j].put(value, yMapArray[j].getOrDefault(value, 0) + 1);
                         int blockIndex = (i / 3) * 3 + (j / 3);
-                        blockMap[blockIndex].put(value, blockMap[blockIndex].getOrDefault(value, 0) + 1);
+                        blockMapArray[blockIndex].put(value, blockMapArray[blockIndex].getOrDefault(value, 0) + 1);
 
-                        if (xMap[i].get(value) > 1 || yMap[j].get(value) > 1 || blockMap[blockIndex].get(value) > 1){
+                        if (xMapArray[i].get(value) > 1 || yMapArray[j].get(value) > 1 || blockMapArray[blockIndex].get(value) > 1){
                             return false;
                         }
                     }
                 }
             }
+//            Map<Character, Integer>[] xMapArray = new HashMap[9];
+//            Map<Character, Integer>[] yMapArray = new HashMap[9];
+//            Map<Character, Integer>[] blockMapArray = new HashMap[9];
+//            for (int i = 0; i < 9; i++) {
+//                xMapArray[i] = new HashMap<>();
+//                yMapArray[i] = new HashMap<>();
+//                blockMapArray[i] = new HashMap<>();
+//            }
 
+//            for (int i = 0; i < 9; i++) {
+//                for (int j = 0; j < 9; j++) {
+//                    char value = board[i][j];
+//                    if (value != '.'){
+//                        xMapArray[i].put(value, xMapArray[i].getOrDefault(value, 0) + 1);
+//                        yMapArray[j].put(value, yMapArray[j].getOrDefault(value, 0) + 1);
+//                        int blockIndex = (i / 3) * 3 + (j / 3);
+//                        blockMapArray[blockIndex].put(value, blockMapArray[blockIndex].getOrDefault(value, 0) + 1);
+//
+//                        if (xMapArray[i].get(value) > 1 || yMapArray[j].get(value) > 1 || blockMapArray[blockIndex].get(value) > 1){
+//                            return false;
+//                        }
+//                    }
+//                }
+//            }
             return true;
         }
 

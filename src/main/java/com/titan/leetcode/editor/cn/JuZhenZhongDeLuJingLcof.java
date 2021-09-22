@@ -45,7 +45,7 @@
 package com.titan.leetcode.editor.cn;
 public class JuZhenZhongDeLuJingLcof{
     public static void main(String[] args) {
-       Solution solution = new JuZhenZhongDeLuJingLcof().new Solution();
+        Solution solution = new JuZhenZhongDeLuJingLcof().new Solution();
         solution.exist(new char[][]{{'a', 'b'}, {'c', 'd'}}, "abcd");
     }
 

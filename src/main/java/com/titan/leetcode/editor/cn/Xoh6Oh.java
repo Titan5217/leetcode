@@ -58,15 +58,49 @@
 
 package com.titan.leetcode.editor.cn;
 public class Xoh6Oh{
-  public static void main(String[] args) {
+    public static void main(String[] args) {
        Solution solution = new Xoh6Oh().new Solution();
-  }
-  //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int divide(int a, int b) {
-        return -1;
+        solution.divide(-2147483648, 2);
     }
-}
-//leetcode submit region end(Prohibit modification and deletion)
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int divide(int a, int b) {
+            // 二分
+            if (b == 1){
+                return a;
+            }
+            if (a == Integer.MIN_VALUE && b == -1){
+                return Integer.MAX_VALUE;
+            }
+            boolean isNeg = (a > 0) ^ (b > 0);
+            long x = Math.abs((long)a);
+            long y = Math.abs((long)b);
+            long left = 0, right = x;
+            while (left < right){
+                long mid = (right + left + 1) >> 1;
+                if (mul(mid, y) <= x){
+                    left = mid;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            long ans = isNeg ? -left : left;
+            if (ans > Integer.MAX_VALUE || ans < Integer.MIN_VALUE) return Integer.MAX_VALUE;
+            return (int)ans;
+        }
+
+        private long mul(long x, long y) {
+            long ans = 0;
+            while (y > 0) {
+                if ((y & 1) == 1){
+                    ans += x;
+                }
+                y = y >> 1;
+                x += x;
+            }
+            return ans;
+        }
+    }
+    //leetcode submit region end(Prohibit modification and deletion)
 
 }
